@@ -4,18 +4,18 @@ steps:
   # Build
   - name: "gcr.io/cloud-builders/docker"
     args:
-      - "build"
-      - "--build-arg"
-      - "PAT=${_PAT}"
-      - "-t"
-      - "gcr.io/$PROJECT_ID/frontend-dashboard"
-      - "."
+      - build
+      - --build-arg
+      - PAT=${_PAT}
+      - -t
+      - us-central1-docker.pkg.dev/$PROJECT_ID/images/frontend-dashboard
+      - .
 
   # Push
   - name: "gcr.io/cloud-builders/docker"
     args:
       - push
-      - gcr.io/$PROJECT_ID/frontend-dashboard
+      - us-central1-docker.pkg.dev/$PROJECT_ID/images/frontend-dashboard
 
   # Authenticate
   - name: "gcr.io/cloud-builders/kubectl"
